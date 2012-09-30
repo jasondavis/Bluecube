@@ -1,0 +1,9 @@
+<routing>
+	<option name="default_page" value="" /> 	<!-- page that will be displayed when no url match is found. leave empty to throw 404 error -->
+	<option name="default_action" value="" />	<!-- action that will be executed when default page is displayed instead requested one -->
+	<option name="default_format" value="[^/]+" />
+	<option name="encode_function" value="urlencode" />
+	<option name="decode_function" value="urldecode" />
+        
+	<route url="/" set.page="Home" />
+</routing>

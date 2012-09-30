@@ -1,0 +1,3 @@
+<com:Content ContentPlaceHolderId="MainContent">
+	<com:Button Text="Click Me!" OnClick="Button_Click" />
+</com:Content>

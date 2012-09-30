@@ -1,0 +1,77 @@
+table.TCalendar {
+	width:100%;
+}
+
+table.TCalendar thead td {
+	background-color:#F5F5F5;
+	font-weight:bold;
+	text-align:center;
+	color:gray;
+	padding:3px;
+}
+
+table.TCalendar tbody td {
+	text-align:right;
+}
+
+table.TCalendar td.prev-month-day, table.TCalendar td.next-month-day {
+	color:silver;
+	background-color:white;
+	border:solid white 1px;
+}
+
+table.TCalendar .day {
+	background-color:#F5F5F5;
+	padding:5px;
+	border:solid F5F5F5 1px;
+}
+
+table.TCalendar .weekend {
+	background-color:#E5E5E5;
+	border:solid #E5E5E5 1px;
+}
+
+table.TCalendar .current-day {
+	color:gray;
+	background-color:#C7E1FF;
+	font-weight:bold;
+	border: solid gray 1px;
+}
+
+table.TCalendar a.back-year-link, 
+table.TCalendar a.back-month-link,
+table.TCalendar a.next-year-link,
+table.TCalendar a.next-month-link {
+	display:block;
+	width:16px;
+	height:16px;
+	background-repeat:no-repeat;
+}
+
+table.TCalendar a.back-year-link, 
+table.TCalendar a.back-month-link {
+	float:left;
+}
+
+table.TCalendar a.next-year-link, 
+table.TCalendar a.next-month-link {
+	float:right;
+}
+
+table.TCalendar a.back-year-link {
+	background-image:url(Images/2leftarrow.png);
+	margin-right:10px;	
+}
+
+table.TCalendar a.back-month-link {
+	background-image:url(Images/1leftarrow.png);
+}
+
+table.TCalendar a.next-year-link {
+	background-image:url(Images/2rightarrow.png);
+	margin-left:10px;
+}
+
+table.TCalendar a.next-month-link {
+	background-image:url(Images/1rightarrow.png);
+}

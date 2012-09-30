@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<siteconfig>
+	<include file="Config/routing.xml" />
+
+	<database>
+		<option name="default_connection" value="connection1" />
+
+		<connections>
+			<connection name="connection1"
+                        charset="utf8"
+                        host="localhost"
+                        username="user"
+                        password="pass"
+                        database="database"
+                        persistent="true"
+            />
+		</connections>
+	</database>
+
+	<mailing>
+		<option name="default_sender" value="mailer1" />
+
+		<sender name="mailer1"
+				mailer="smtp"
+				host="host"
+				port="25"
+				username="user@host.com"
+				password="pass"
+				smtpauth="true"
+				fromname="from name"
+				from="user@host.com"
+		/>
+	</mailing>
+
+	<authorization>
+		<option name="login_page" value="Login" />
+		<option name="authorization_controller" value="TDbAuthController" /> <!-- which auth controller to use -->
+		<option name="session_controller" value="" /> <!-- leave empty for default PHP session engine.
+		                                                                       Otherwise write the controller's class name here -->
+		<session lifetime="86400" path="/" secure="false" httponly="true" domain=".test.dev" />
+
+		<controller class="TDbSessionController">
+			<option name="connection" value="connection1" />
+			<option name="table" value="sessions" />
+		</controller>
+
+		<controller class="TDbAuthController">
+			<option name="connection" value="connection1" />
+			<option name="table" value="users" />
+		</controller>
+
+		<role name="default" order="allow,deny">			<!--  each user, even not logged-in -->
+			<allow page="*" actions="*" />
+		</role>
+
+		<role name="authorized" order="allow,deny">			<!-- logged-in user -->
+			<allow page="*" actions="*" />
+		</role>
+	</authorization>
+
+	<memcache> <!-- many servers are allowed -->
+		<server host="localhost"
+				port="11211"
+				persistent="true"
+				weight="1"
+				timeout="1"
+				retry="10"
+				online="false"
+		/>
+	</memcache>
+
+	<viewstate> <!-- only the first enabled controller will be used -->
+		<controller class="TViewstateHttpController" enabled="true" />
+		<controller class="TViewstateSqLiteController" enabled="false">
+			<option name="expires" value="3600" />
+		</controller>
+	</viewstate>
+
+	<caching>
+		<server-side> <!-- all enabled controllers will be used -->
+			<controller class="TSqLiteCacheController" enabled="true" /> <!-- (TFileCacheController, TMemcacheCacheController) -->
+			<controller class="TMemcacheCacheController" enabled="false" /> <!-- (TFileCacheController, TMemcacheCacheController) -->
+			<controller class="TFileCacheController" enabled="false" />
+
+			<option name="gc-probability" value="1" /> <!-- probability that the garbage collector will clean old cache entries on each request -->
+			<option name="gc-divisor" value="100" /> <!-- probability divisor -->
+            <option name="runtime-memory-cache" value="true" />
+		</server-side>
+
+		<client-side>
+			<url match="(.jpg|.jpeg|.jpe|.gif|.png|.bmp)$"
+					expires="31536000"
+					etag-session-sensitive="false"
+			/>
+			<url match="(.html|/)$"
+					expires="1"
+					etag-session-sensitive="true"
+			 />
+			<url match="(.css|.js)$"
+					expires="86400"
+					etag-session-sensitive="false"
+			/>
+		</client-side>
+	</caching>
+
+	<errors>
+		<option name="mailto" value="borys.forytarz@gmail.com" />
+	</errors>
+</siteconfig>
