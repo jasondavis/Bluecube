@@ -5,9 +5,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>Hello!</h1>
-	<com:Form>
-		<com:ContentPlaceHolder ID="MainContent" />
-	</com:Form>
+    <com:Form>
+        <h1><com:Literal ID="SomeText" /></h1>
+        <com:ContentPlaceHolder ID="MainPlaceholder" />
+    </com:Form>
 </body>
 </html>

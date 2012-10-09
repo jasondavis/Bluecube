@@ -5,5 +5,6 @@
 	<option name="encode_function" value="urlencode" />
 	<option name="decode_function" value="urldecode" />
         
+    <route url="/{page}/{action}" />
 	<route url="/" set.page="Home" />
 </routing>

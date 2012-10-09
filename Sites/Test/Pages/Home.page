@@ -1,3 +1,7 @@
-<com:Content ContentPlaceHolderId="MainContent">
-	<com:Button Text="Click Me!" OnClick="Button_Click" />
+<com:Content ContentPlaceHolderId="MainPlaceholder">
+    <h2>Hello from Home!</h2>
+    
+    <com:Button ID="Button" OnClick="Button_Click" Text="Click me!" />
+    <com:TextBox ID="TextBox" Text="This text will be replaced!" />
+    <com:HyperLink ID="ActionLink" Text="Click to run Home::action1" NavigateUrl="[page=Home action=action1]" Visible="false" />
 </com:Content>
